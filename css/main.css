@@ -34,3 +34,9 @@ body, html {height:100%;}
 #svg_5 {
   fill: hsla(1,100%,61%,1);
 }
+
+@media query (min-width:1148px) {
+#svg_0 {
+  display: none;
+}
+}
