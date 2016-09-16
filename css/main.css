@@ -35,8 +35,9 @@ body, html {height:100%;}
   fill: hsla(1,100%,61%,1);
 }
 
-@media query (min-width:1148px) {
+@media (min-width:1148px) and (min-height:760px) {
 #svg_0 {
+  visibility: hidden;
   display: none;
 }
 }
