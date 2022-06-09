@@ -6,7 +6,7 @@ import authorImg from "public/assets/images/onazanhadomar.png";
 
 const Index = () => {
   return (
-    <Layout className="md:columns-2 md:p-12">
+    <Layout className="lg:columns-2 md:p-12">
       <MainPageMeta />
       <Image
         src={authorImg}
