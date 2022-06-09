@@ -1,58 +1,24 @@
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
-import { getAllPosts } from '../lib/api'
-import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
-import Post from '../types/post'
+import { MainPageMeta } from "components/mainpage/meta";
+import Container from "components/shared/container";
+import Layout from "components/shared/layout";
 
-type Props = {
-  allPosts: Post[]
-}
-
-const Index = ({ allPosts }: Props) => {
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
+const Index = () => {
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>Vladislav Sorokin</title>
-        </Head>
-        <Container>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
-      </Layout>
-    </>
-  )
-}
+    <Layout>
+      <MainPageMeta />
+      <h1>Hi there 👋</h1>
+      <div>
+        I am Vladislav, professional software developer, amateur artist,
+        beginner chess player and just a curious person living in a beautiful
+        Praia das Macas, Portugal. If you came here to hire me, here you could
+        find all the info needed - cv, portfolio and my developer’s blog. If you
+        want to know me better, here you could read about me and what I consider
+        my current mission: to help entrepreneurs automate mundane tasks, have
+        more free time and enjoy life. You can find me on Twitter, GitHub or
+        email me at sorokinvj@gmail.com
+      </div>
+    </Layout>
+  );
+};
 
-export default Index
-
-export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
-
-  return {
-    props: { allPosts },
-  }
-}
+export default Index;

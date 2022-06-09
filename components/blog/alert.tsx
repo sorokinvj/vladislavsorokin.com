@@ -1,4 +1,4 @@
-import Container from "./container";
+import Container from "../shared/container";
 import cn from "classnames";
 
 type Props = {
