@@ -11,4 +11,9 @@
   h6 {
     font-family: "Filson Pro", sans-serif;
   }
+  *,
+  ::before,
+  ::after {
+    border: none;
+  }
 }
