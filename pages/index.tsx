@@ -6,10 +6,16 @@ import authorImg from "public/assets/images/onazanhadomar.png";
 
 const Index = () => {
   return (
-    <Layout>
+    <Layout className="md:columns-2 md:p-12">
       <MainPageMeta />
-      <Image src={authorImg} priority alt="picture of Vladislav Sorokin" />
-      <Container className="p-[48px]">
+      <Image
+        src={authorImg}
+        priority
+        alt="picture of Vladislav Sorokin"
+        width={600}
+        height={450}
+      />
+      <Container className="p-12 break-before-column">
         <h1 className="text-3xl">Hi there 👋</h1>
         <div className="font-light pt-6">
           I am Vladislav, professional software developer, amateur artist,
