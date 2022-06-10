@@ -1,6 +1,5 @@
 import { MainPageMeta } from "components/mainpage/meta";
 import Container from "components/shared/container";
-import Layout from "components/shared/layout";
 import { getMainPageContent } from "lib/api";
 import markdownToHtml from "lib/markdownToHtml";
 import Image from "next/image";
@@ -35,7 +34,6 @@ export default Index;
 export const getStaticProps = async () => {
   const mainPage = getMainPageContent();
   const content = await markdownToHtml(mainPage.content || "");
-
   return {
     props: {
       page: {
