@@ -4,16 +4,16 @@ import Layout from "components/shared/layout";
 import { getMainPageContent } from "lib/api";
 import markdownToHtml from "lib/markdownToHtml";
 import Image from "next/image";
-import { MainPageContent } from "types/mainpagecontent";
+import { MainPage } from "types/mainPage";
 import markdownStyles from "styles/markdown.module.css";
 
 type Props = {
-  page: MainPageContent;
+  page: MainPage;
 };
 
 const Index: React.FC<Props> = ({ page }) => (
   <Container className="lg:columns-2 max-w-6xl lg:mt-28">
-    <MainPageMeta />
+    <MainPageMeta meta={page.data.meta} />
     <Image
       src={page.data.authorImage}
       priority
