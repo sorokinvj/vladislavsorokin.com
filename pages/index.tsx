@@ -2,48 +2,46 @@ import { MainPageMeta } from "components/mainpage/meta";
 import Container from "components/shared/container";
 import Layout from "components/shared/layout";
 import { getMainPageContent } from "lib/api";
+import markdownToHtml from "lib/markdownToHtml";
 import Image from "next/image";
-import authorImg from "public/assets/images/onazanhadomar.png";
 import { MainPageContent } from "types/mainpagecontent";
+import markdownStyles from "styles/markdown.module.css";
 
 type Props = {
-  content: MainPageContent;
+  page: MainPageContent;
 };
 
-const Index: React.FC<Props> = ({ content }) => {
-  console.log(content);
-  return (
-    <Layout className="lg:columns-2 md:p-12">
-      <MainPageMeta />
-      <Image
-        src={authorImg}
-        priority
-        alt="picture of Vladislav Sorokin"
-        width={600}
-        height={450}
+const Index: React.FC<Props> = ({ page }) => (
+  <Container className="lg:columns-2 max-w-6xl lg:mt-28">
+    <MainPageMeta />
+    <Image
+      src={page.data.authorImage}
+      priority
+      alt="Photo of Vladislav Sorokin"
+      width="600"
+      height="450"
+    />
+    <Container className="p-12 break-before-column">
+      <div
+        className={markdownStyles["markdown"]}
+        dangerouslySetInnerHTML={{ __html: page.content }}
       />
-      <Container className="p-12 break-before-column">
-        <h1 className="text-3xl">Hi there 👋</h1>
-        <div className="font-light pt-6">
-          I am Vladislav, professional software developer, amateur artist,
-          beginner chess player and just a curious person living in a beautiful
-          Praia das Macas, 🇵🇹. If you came here to hire me, here you could find
-          all the info needed - cv, portfolio and my developer’s blog. If you
-          want to know me better, here you could read about me and what I
-          consider my current mission: to help entrepreneurs automate mundane
-          tasks, have more free time and enjoy life. You can find me
-          on Twitter, GitHub or email me at sorokinvj@gmail.com
-        </div>
-      </Container>
-    </Layout>
-  );
-};
+    </Container>
+  </Container>
+);
 
 export default Index;
 
 export const getStaticProps = async () => {
-  const content = getMainPageContent();
+  const mainPage = getMainPageContent();
+  const content = await markdownToHtml(mainPage.content || "");
+
   return {
-    props: { content },
+    props: {
+      page: {
+        data: mainPage.data,
+        content,
+      },
+    },
   };
 };

@@ -47,7 +47,8 @@ export function getAllPosts(fields: string[] = []) {
 }
 
 export function getMainPageContent() {
-  const fullPath = join(pagesDirectory, `main-page-content.mdx`);
+  const fullPath = join(pagesDirectory, `main-page.mdx`);
   const mainPageContentFile = fs.readFileSync(fullPath, "utf8");
-  return matter(mainPageContentFile);
+  const { data, content } = matter(mainPageContentFile);
+  return { data, content };
 }
