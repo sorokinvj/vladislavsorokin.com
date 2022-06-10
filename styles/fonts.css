@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+@font-face {
+  font-family: "Filson Pro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("../public/assets/fonts/FilsonPro-Bold.woff2") format("woff2"),
+    url("../public/assets/fonts/FilsonPro-Bold.woff") format("woff");
+}
