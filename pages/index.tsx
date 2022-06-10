@@ -1,10 +1,17 @@
 import { MainPageMeta } from "components/mainpage/meta";
 import Container from "components/shared/container";
 import Layout from "components/shared/layout";
+import { getMainPageContent } from "lib/api";
 import Image from "next/image";
 import authorImg from "public/assets/images/onazanhadomar.png";
+import { MainPageContent } from "types/mainpagecontent";
 
-const Index = () => {
+type Props = {
+  content: MainPageContent;
+};
+
+const Index: React.FC<Props> = ({ content }) => {
+  console.log(content);
   return (
     <Layout className="lg:columns-2 md:p-12">
       <MainPageMeta />
@@ -33,3 +40,10 @@ const Index = () => {
 };
 
 export default Index;
+
+export const getStaticProps = async () => {
+  const content = getMainPageContent();
+  return {
+    props: { content },
+  };
+};
