@@ -13,6 +13,14 @@
   @apply font-light;
 }
 
+.markdown a {
+  @apply text-blue-500;
+}
+
+.markdown a:hover {
+  @apply text-blue-500/75;
+}
+
 .markdown h1 {
   @apply text-3xl;
 }
