@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+yarn tsc --incremental --noEmit -p tsconfig.json
+yarn lint-staged
