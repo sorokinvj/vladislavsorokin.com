@@ -1,13 +1,13 @@
 @font-face {
   font-family: "Filson Pro";
-  font-weight: bold;
+  font-weight: medium;
   font-style: normal;
   src: url("../public/assets/fonts/FilsonPro-Medium.woff2") format("woff2"),
     url("../public/assets/fonts/FilsonPro-Medium.woff") format("woff");
 }
 @font-face {
   font-family: "Helvitica Neue";
-  font-weight: normal;
+  font-weight: light;
   font-style: normal;
   src: url("../public/assets/fonts/HelveticaNeue-Light.woff2") format("woff2"),
     url("../public/assets/fonts/HelveticaNeue-Light.woff") format("woff");
