@@ -8,12 +8,22 @@
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  nav a,
+  nav p,
+  nav span {
     font-family: "Filson Pro", sans-serif;
+    font-weight: 500;
+    color: black;
   }
   *,
   ::before,
   ::after {
     border: none;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
   }
 }

@@ -24,7 +24,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout preview={preview}>
+    <>
       <Container>
         <Header />
         {router.isFallback ? (
@@ -49,7 +49,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
           </>
         )}
       </Container>
-    </Layout>
+    </>
   );
 };
 

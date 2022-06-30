@@ -14,7 +14,7 @@ const Index = ({ allPosts }: Props) => {
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);
   return (
-    <Layout>
+    <>
       <Head>
         <title>Vladislav Sorokin</title>
       </Head>
@@ -31,7 +31,7 @@ const Index = ({ allPosts }: Props) => {
         )}
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
-    </Layout>
+    </>
   );
 };
 
