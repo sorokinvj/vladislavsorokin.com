@@ -4,11 +4,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["Helvetica Neue", ...defaultTheme.fontFamily.sans],
+        title: "Filson Pro",
       },
       colors: {
-        primary: "#FCC537",
         disabled: "#DEDEDE",
+        darkgrey: "#656565",
+        yellow: "#ffbd11",
       },
     },
     letterSpacing: {
