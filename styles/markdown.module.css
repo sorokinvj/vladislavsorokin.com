@@ -1,15 +1,3 @@
-.intro h1 {
-  font-size: 2rem;
-  margin-bottom: 16px;
-}
-
-.intro p {
-  width: 80%;
-  font-size: 18px;
-  line-height: 26px;
-  margin: 0 auto;
-}
-
 .markdown {
   @apply text-lg leading-relaxed;
 }
