@@ -5,5 +5,6 @@ export interface MainPage {
     authorImage: string;
     meta: PageMeta;
   };
-  content: string;
+  posts: any[];
+  intro: string;
 }

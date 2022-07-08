@@ -1,6 +1,8 @@
 import fs from "fs";
 import { join, parse } from "path";
 import matter from "gray-matter";
+import { Post } from "types/post";
+import { parseDate } from "./parseDate";
 
 const postsDirectory = join(process.cwd(), "_posts");
 const pagesDirectory = join(process.cwd(), "_pages");
@@ -9,40 +11,37 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory).map((file) => parse(file).name);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+type PostKeys = keyof Post;
+
+export function getPostBySlug(slug: string, fields: PostKeys[]): Post {
   const fullPath = join(postsDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  type Items = {
-    [key: string]: string;
-  };
+  let dataFieldsTempObj = fields.reduce(
+    (acc, curr) => ({
+      ...acc,
+      [curr]: data[curr] ?? null,
+      slug,
+    }),
+    {} as Post
+  );
 
-  const items: Items = {};
+  if (fields.includes("content")) {
+    dataFieldsTempObj = { ...dataFieldsTempObj, content };
+  }
 
-  // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
-    if (field === "slug") {
-      items[field] = slug;
-    }
-    if (field === "content") {
-      items[field] = content;
-    }
-
-    if (typeof data[field] !== "undefined") {
-      items[field] = data[field];
-    }
-  });
-
-  return items;
+  return dataFieldsTempObj;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts(fields: PostKeys[] = []) {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+    .sort((post1, post2) =>
+      parseDate(post1.date) > parseDate(post2.date) ? -1 : 1
+    );
   return posts;
 }
 

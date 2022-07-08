@@ -25,7 +25,7 @@ export const Intro: React.FC<Props> = ({ page }) => {
           mainPageStyles["intro"],
           "text-center mx-auto md:text-left md:col-span-5 md:m-0"
         )}
-        dangerouslySetInnerHTML={{ __html: page.content }}
+        dangerouslySetInnerHTML={{ __html: page.intro }}
       />
     </div>
   );

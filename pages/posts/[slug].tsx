@@ -9,12 +9,12 @@ import { getPostBySlug, getAllPosts } from "../../lib/api";
 import PostTitle from "components/blog/post-title";
 import Head from "next/head";
 import { CMS_NAME } from "../../lib/constants";
-import markdownToHtml from "../../lib/markdownToHtml";
-import PostType from "../../types/post";
+import { markdownToHtml } from "../../lib/markdownToHtml";
+import { Post } from "../../types/post";
 
 type Props = {
-  post: PostType;
-  morePosts: PostType[];
+  post: Post;
+  morePosts: Post[];
   preview?: boolean;
 };
 
@@ -36,13 +36,12 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 <title>
                   {post.title} | Next.js Blog Example with {CMS_NAME}
                 </title>
-                <meta property="og:image" content={post.ogImage.url} />
+                <meta property="og:image" content={post.ogImage} />
               </Head>
               <PostHeader
                 title={post.title}
                 coverImage={post.coverImage}
                 date={post.date}
-                author={post.author}
               />
               <PostBody content={post.content} />
             </article>
@@ -66,7 +65,6 @@ export async function getStaticProps({ params }: Params) {
     "title",
     "date",
     "slug",
-    "author",
     "content",
     "ogImage",
     "coverImage",

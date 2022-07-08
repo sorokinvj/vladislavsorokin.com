@@ -4,7 +4,7 @@ import HeroPost from "components/blog/hero-post";
 import Layout from "components/shared/layout";
 import { getAllPosts } from "lib/api";
 import Head from "next/head";
-import Post from "types/post";
+import { Post } from "types/post";
 
 type Props = {
   allPosts: Post[];
@@ -24,9 +24,8 @@ const Index = ({ allPosts }: Props) => {
             title={heroPost.title}
             coverImage={heroPost.coverImage}
             date={heroPost.date}
-            author={heroPost.author}
             slug={heroPost.slug}
-            excerpt={heroPost.excerpt}
+            excerpt={heroPost?.lead}
           />
         )}
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
@@ -38,14 +37,7 @@ const Index = ({ allPosts }: Props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "excerpt",
-  ]);
+  const allPosts = getAllPosts(["title", "date", "slug", "coverImage", "lead"]);
 
   return {
     props: { allPosts },
