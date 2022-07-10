@@ -1,4 +1,3 @@
-import cn from "classnames";
 import { Navigation } from "../navigation";
 
 type Props = {

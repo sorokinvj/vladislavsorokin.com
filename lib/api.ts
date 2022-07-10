@@ -2,7 +2,7 @@ import fs from "fs";
 import { join, parse } from "path";
 import matter from "gray-matter";
 import { Post } from "types/post";
-import { parseDate } from "./parseDate";
+import { sortByKeys } from "./sortByKeys";
 
 const postsDirectory = join(process.cwd(), "_posts");
 const pagesDirectory = join(process.cwd(), "_pages");
@@ -17,7 +17,6 @@ export function getPostBySlug(slug: string, fields: PostKeys[]): Post {
   const fullPath = join(postsDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
-
   let dataFieldsTempObj = fields.reduce(
     (acc, curr) => ({
       ...acc,
@@ -34,14 +33,20 @@ export function getPostBySlug(slug: string, fields: PostKeys[]): Post {
   return dataFieldsTempObj;
 }
 
-export function getAllPosts(fields: PostKeys[] = []) {
+type PostSortType = "isFeatured" | "date";
+
+export function getAllPosts({
+  fields,
+  sortedBy,
+}: {
+  fields?: PostKeys[];
+  sortedBy?: PostSortType[];
+} = {}): Post[] {
   const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
-    // sort posts by date in descending order
-    .sort((post1, post2) =>
-      parseDate(post1.date) > parseDate(post2.date) ? -1 : 1
-    );
+  const posts = slugs.map((slug) => getPostBySlug(slug, fields ?? []));
+  if (sortedBy) {
+    sortByKeys(posts, sortedBy);
+  }
   return posts;
 }
 

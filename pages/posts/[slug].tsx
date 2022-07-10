@@ -4,7 +4,6 @@ import Container from "components/shared/container";
 import PostBody from "components/blog/post-body";
 import Header from "components/blog/header";
 import PostHeader from "components/blog/post-header";
-import Layout from "components/shared/layout";
 import { getPostBySlug, getAllPosts } from "../../lib/api";
 import PostTitle from "components/blog/post-title";
 import Head from "next/head";
@@ -41,7 +40,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
               <PostHeader
                 title={post.title}
                 coverImage={post.coverImage}
-                date={post.date}
+                date={post.date.toString()}
               />
               <PostBody content={post.content} />
             </article>
@@ -82,7 +81,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts();
 
   return {
     paths: posts.map((post) => {
