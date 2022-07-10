@@ -2,6 +2,7 @@ import React from "react";
 import { Post as PostType } from "types/post";
 import Image from "next/image";
 import dayjs from "dayjs";
+import { getColorFromTag } from "lib/getColorFromTag";
 
 interface Props {
   post: PostType;
@@ -49,8 +50,14 @@ export const Post: React.FC<Props> = ({ post }) => {
   if (post?.isFeatured) {
     return <FeaturedPost post={post} />;
   }
+
+  const borderColor = getColorFromTag(post.tag);
+
   return (
-    <div className="flex flex-col mt-12 border-solid border-l-8 border-y-0 border-r-0 border-yellow pl-6 col-span-3 h-[145px] md:w-1/2 md:h-[110px] md:col-span-4">
+    <div
+      className="border-solid border-l-8 border-y-0 border-r-0 flex flex-col mt-12 pl-6 col-span-3 h-[110px] md:w-1/2 md:h-[145px] md:col-span-4"
+      style={{ borderColor }}
+    >
       <h2>{post.title}</h2>
       <div className="flex items-end grow">
         <PostFooter post={post} />

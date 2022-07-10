@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
   theme: {
@@ -8,10 +9,12 @@ module.exports = {
         title: "Filson Pro",
       },
       colors: {
+        yellow: "#ffbd11",
+        malibu: "#48e2fe",
+        apricot: "#EA7F68",
         disabled: "#DEDEDE",
         darkgrey: "#656565",
         lightgrey: "rgba(101, 101, 101, 0.67)",
-        yellow: "#ffbd11",
       },
     },
     letterSpacing: {
