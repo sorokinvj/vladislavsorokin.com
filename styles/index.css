@@ -25,12 +25,22 @@
     line-height: 1.2;
   }
 
+  h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  a,
   p {
-    @apply text-base leading-6 font-sans font-light;
+    @apply text-base leading-6 font-sans;
+  }
+
+  p {
+    @apply font-light;
   }
 
   a {
-    @apply text-base leading-6 font-sans font-normal;
+    @apply font-normal;
     color: #ffbd11;
     text-decoration: underline;
   }
@@ -46,6 +56,6 @@
   }
 
   .grid-container {
-    @apply w-full grid grid-cols-3 gap-x-4 p-4 md:grid-cols-8 md:gap-x-10;
+    @apply w-full grid grid-cols-3 gap-x-4 md:grid-cols-8 md:gap-x-10;
   }
 }

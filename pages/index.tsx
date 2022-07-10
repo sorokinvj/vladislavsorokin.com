@@ -25,7 +25,7 @@ export const getStaticProps = async () => {
   const mainPage = getMainPageContent();
   const intro = await markdownToHtml(mainPage.content || "");
   const posts = getAllPosts({
-    fields: ["title", "date", "thumbnail", "lead", "isFeatured"],
+    fields: ["title", "date", "thumbnail", "lead", "isFeatured", "tag"],
     sortedBy: ["isFeatured", "date"],
   });
 

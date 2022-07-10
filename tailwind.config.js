@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         disabled: "#DEDEDE",
         darkgrey: "#656565",
+        lightgrey: "rgba(101, 101, 101, 0.67)",
         yellow: "#ffbd11",
       },
     },
