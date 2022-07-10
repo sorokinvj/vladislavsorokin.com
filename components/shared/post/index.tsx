@@ -13,11 +13,8 @@ const FeaturedPost = ({ post }: Props) => {
     return null;
   }
   return (
-    <div className="grid-container">
-      <div className="col-span-3 order-0 mb-6 md-col-span-5 md-order-1">
-        <h2>{post.title}</h2>
-      </div>
-      <div className="col-span-3 order-1 mb-6 md:col-span-3 md:order-0">
+    <div className="grid-container md:grid-rows-[auto_1fr_1fr] items-start">
+      <div className="col-span-3 order-2 mb-6 md:col-span-3 md:order-1 md:row-span-4 md:m-0">
         <Image
           src={post.thumbnail}
           alt={post.title}
@@ -26,12 +23,17 @@ const FeaturedPost = ({ post }: Props) => {
           layout="responsive"
         />
       </div>
-      <p className="col-span-3 order-2 mb-4">{post.lead}</p>
-      <div className="col-span-3 order-3 flex items-start">
-        <p className="text-lightgrey mr-6">
-          {dayjs(post.date).format("MMM D, YYYY")}
-        </p>
-        <p className="text-lightgrey">#{post.tag}</p>
+      <div className="contents">
+        <div className="col-span-3 order-1 mb-4 md:order-2 md:col-span-4">
+          <h2>{post.title}</h2>
+        </div>
+        <p className="col-span-3 order-4 mb-4 md:col-span-4">{post.lead}</p>
+        <div className="col-span-3 order-5 flex items-start md:self-end">
+          <p className="text-lightgrey mr-6">
+            {dayjs(post.date).format("MMM D, YYYY")}
+          </p>
+          <p className="text-lightgrey">#{post.tag}</p>
+        </div>
       </div>
     </div>
   );

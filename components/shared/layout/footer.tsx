@@ -1,6 +1,6 @@
 export const Footer: React.FC = () => (
   <footer className="bg-neutral-50 w-full">
-    <div className="py-20 grid-container md:max-w-4xl md:mx-auto">
+    <div className="px-4 py-20 grid-container md:max-w-4xl md:mx-auto">
       <div className="col-span-3 md:col-span-8">
         <p className="font-title text-4xl text-darkgrey mb-8">
           Vladislav Sorokin
