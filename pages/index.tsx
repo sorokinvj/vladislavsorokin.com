@@ -1,27 +1,23 @@
-import { Intro } from "components/mainpage/intro";
+import { Intro } from "components/mainpage/intro/intro";
 import { MainPageMeta } from "components/mainpage/meta";
+import { Posts } from "components/mainpage/posts";
 import { getAllPosts, getMainPageContent } from "lib/api";
 import { markdownToHtml } from "lib/markdownToHtml";
 import { MainPage } from "types/mainPage";
-import { Post } from "components/shared/post";
-import { Post as PostType } from "types/post";
 
 type Props = {
   page: MainPage;
 };
 
-const Index: React.FC<Props> = ({ page }) => {
-  console.log(page.posts);
-  return (
-    <>
-      <MainPageMeta meta={page.data.meta} />
-      <Intro page={page} />
-      {page.posts.map((post: PostType) => (
-        <Post post={post} key={post.slug} />
-      ))}
-    </>
-  );
-};
+const Index: React.FC<Props> = ({ page }) => (
+  <>
+    <MainPageMeta meta={page.data.meta} />
+    <Intro page={page} />
+    <div className="col-span-3 md:col-span-8">
+      <Posts posts={page.posts} />
+    </div>
+  </>
+);
 
 export default Index;
 

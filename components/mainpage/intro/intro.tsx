@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import mainPageStyles from "./main.module.css";
+import introStyles from "./intro.module.css";
 import cn from "classnames";
 import { MainPage } from "types/mainPage";
 
@@ -22,7 +22,7 @@ export const Intro: React.FC<Props> = ({ page }) => {
       </div>
       <div
         className={cn(
-          mainPageStyles["intro"],
+          introStyles["intro"],
           "col-span-3 text-center mx-auto md:text-left md:col-span-5 md:m-0"
         )}
         dangerouslySetInnerHTML={{ __html: page.intro }}
