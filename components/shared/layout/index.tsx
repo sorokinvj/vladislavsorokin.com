@@ -9,9 +9,9 @@ type Props = {
 const Layout = ({ className, children }: Props) => {
   return (
     <>
-      <div className="grid-container p-4 md:max-w-4xl md:mx-auto">
+      <div className="p-4 md:max-w-4xl md:mx-auto">
         <Navigation />
-        <main className="col-span-3 md:col-span-8">{children}</main>
+        <main>{children}</main>
       </div>
       <Footer />
     </>

@@ -7,6 +7,15 @@ interface Props {
   post: PostType;
 }
 
+const PostFooter: React.FC<Props> = ({ post }) => (
+  <>
+    <p className="text-lightgrey mr-6">
+      {dayjs(post.date).format("MMM D, YYYY")}
+    </p>
+    <p className="text-lightgrey">#{post.tag}</p>
+  </>
+);
+
 const FeaturedPost = ({ post }: Props) => {
   if (!post?.thumbnail || !post?.lead) {
     console.error("Every featured post must have a thumbnail and a lead text");
@@ -29,10 +38,7 @@ const FeaturedPost = ({ post }: Props) => {
         </div>
         <p className="col-span-3 order-4 mb-4 md:col-span-4">{post.lead}</p>
         <div className="col-span-3 order-5 flex items-start md:self-end">
-          <p className="text-lightgrey mr-6">
-            {dayjs(post.date).format("MMM D, YYYY")}
-          </p>
-          <p className="text-lightgrey">#{post.tag}</p>
+          <PostFooter post={post} />
         </div>
       </div>
     </div>
@@ -43,5 +49,12 @@ export const Post: React.FC<Props> = ({ post }) => {
   if (post?.isFeatured) {
     return <FeaturedPost post={post} />;
   }
-  return <>{post.title}</>;
+  return (
+    <div className="flex flex-col mt-12 border-solid border-l-8 border-y-0 border-r-0 border-yellow pl-6 col-span-3 h-[145px] md:w-1/2 md:h-[110px] md:col-span-4">
+      <h2>{post.title}</h2>
+      <div className="flex items-end grow">
+        <PostFooter post={post} />
+      </div>
+    </div>
+  );
 };

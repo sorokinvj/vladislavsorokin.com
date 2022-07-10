@@ -21,7 +21,7 @@ const MENU = [
 
 export const Navigation = () => {
   return (
-    <header className="col-start-1 col-end-4 md:col-end-9">
+    <header>
       <nav className="flex flex-wrap items-center justify-between md:flex-nowrap">
         <Logo />
         <ul className="w-full flex items-center justify-around mt-2 md:w-auto md:justify-end">

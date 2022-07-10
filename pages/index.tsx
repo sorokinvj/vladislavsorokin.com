@@ -10,13 +10,11 @@ type Props = {
 };
 
 const Index: React.FC<Props> = ({ page }) => (
-  <>
+  <div className="pb-20">
     <MainPageMeta meta={page.data.meta} />
     <Intro page={page} />
-    <div className="col-span-3 md:col-span-8">
-      <Posts posts={page.posts} />
-    </div>
-  </>
+    <Posts posts={page.posts} />
+  </div>
 );
 
 export default Index;
