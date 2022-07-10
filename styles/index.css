@@ -3,23 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+  *,
+  ::before,
+  ::after {
+    border: none;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6,
-  nav a,
-  nav p,
-  nav span {
+  h6 {
     font-family: "Filson Pro", sans-serif;
     font-weight: 500;
     color: black;
-  }
-  *,
-  ::before,
-  ::after {
-    border: none;
   }
 
   h1 {
@@ -35,5 +33,19 @@
     @apply text-base leading-6 font-sans font-normal;
     color: #ffbd11;
     text-decoration: underline;
+  }
+}
+
+@layer components {
+  nav a,
+  nav p,
+  nav span {
+    font-family: "Filson Pro", sans-serif;
+    font-weight: 500;
+    color: black;
+  }
+
+  .grid-container {
+    @apply w-full grid grid-cols-3 gap-x-4 p-4 md:grid-cols-8 md:gap-x-10;
   }
 }
