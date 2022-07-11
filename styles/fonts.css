@@ -12,3 +12,10 @@
   src: url("../public/assets/fonts/HelveticaNeue-Light.woff2") format("woff2"),
     url("../public/assets/fonts/HelveticaNeue-Light.woff") format("woff");
 }
+@font-face {
+  font-family: "Consolas";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../public/assets/fonts/consolas.woff2") format("woff2"),
+    url("../public/assets/fonts/consolas.woff") format("woff");
+}
