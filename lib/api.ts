@@ -52,7 +52,6 @@ export function getAllPosts({
 } = {}): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs.map((slug) => getPostBySlug(slug, fields ?? []));
-  console.log("inside getAllPosts", slugs, posts);
   if (sortedBy) {
     sortByKeys(posts, sortedBy);
   }
