@@ -1,0 +1,21 @@
+.body {
+  @apply col-span-3 md:col-span-8 grid-container;
+}
+
+.body p,
+.body h1,
+.body h2 {
+  @apply col-span-3 md:col-start-2 md:col-end-8;
+}
+
+.body p {
+  @apply mt-6;
+}
+
+.body h2 {
+  @apply text-2xl mt-6;
+}
+
+.body h2 + p {
+  @apply mt-2;
+}

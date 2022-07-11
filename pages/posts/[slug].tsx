@@ -6,7 +6,7 @@ import { Post } from "types/post";
 import ErrorPage from "next/error";
 import { PostPageMeta } from "components/blog/meta";
 import { PostHero } from "components/blog/postHero";
-import PostBody from "components/blog/post-body";
+import { PostBody } from "components/blog/postBody";
 
 type Props = {
   post: Post;
