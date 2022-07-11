@@ -9,10 +9,43 @@ date: "2022-07-07"
 ogImage: "/assets/blog/interface-type/cover.jpeg"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+
+```typescript {5-6, 8}
+import markdownStyles from "./postBody.module.css";
+
+type Props = {
+  content: string;
+};
+
+export const PostBody = ({ content }: Props) => {
+  return (
+    <div
+      className={markdownStyles["body"]}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
+  );
+};
+```
+
+labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
 
 Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
 
 ## Lorem Ipsum
 
 Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+
+![Caption for the image](/assets/blog/interface-type/pic1.png)
+
+Import your spreadsheet in "+ add or import" tab, then go to Extensions with Cmd-Shift-\ or by clicking the Extensions tab in the upper right corner, right below your avatar.
+Then add this code to the scripting window:
+
+![](/assets/blog/interface-type/pic2.png)
+
+## Airtable
+
+First let us understand the big picture: to send an email we need a provider like Mailchimp or Sendgrid. I mean we could always use a Nodemailer running on your server, and it will do the job, but you probably want to have some stats, see who opened your email, track clicks, etc.
+You might ask, well, why do I need an Airtable or Google Sheets if I could go directly to Sendgrid, upload the same data and send the emails? Well, I believe it is a matter of taste and comfort, I used several different providers, but I have never felt comfortable with their interfaces, something always wasn't working for me. On the contrary, spreadsheets are a lot more easy to use and with Airtable they are even user-friendly!
+Lets start. We are going to use Sendgrid, so if you don't have an account, plese go and create one, it's free. After that generate an API key in the Settings, we will use it later to make a request to Sendgrid API.
+Create a new base (in Airtable terms this means create a new spreadsheet).

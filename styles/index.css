@@ -31,12 +31,18 @@
   }
 
   a,
-  p {
+  p,
+  figcaption {
     @apply text-base leading-6 font-sans;
   }
 
-  p {
+  p,
+  span {
     @apply font-light;
+  }
+
+  figcaption {
+    @apply font-light text-lightgrey;
   }
 
   a {
