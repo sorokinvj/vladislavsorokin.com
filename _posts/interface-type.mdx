@@ -11,21 +11,87 @@ ogImage: "/assets/blog/interface-type/cover.jpeg"
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 
-```typescript {5-6, 8}
-import markdownStyles from "./postBody.module.css";
+```jsx
+import { getAllPosts, getPostBySlug } from "lib/api";
+import { markdownToHtml } from "lib/markdownToHtml";
+import { useRouter } from "next/router";
+import React from "react";
+import { Post } from "types/post";
+import ErrorPage from "next/error";
+import { PostPageMeta } from "components/blog/meta";
+import { PostHero } from "components/blog/postHero";
+import { PostBody } from "components/blog/postBody";
 
 type Props = {
-  content: string;
+  post: Post,
+  // morePosts: Post[];
+  // preview?: boolean;
 };
 
-export const PostBody = ({ content }: Props) => {
+const PostPage: React.FC<Props> = ({ post }) => {
+  const router = useRouter();
+  if (!router.isFallback && !post?.slug) {
+    return <ErrorPage statusCode={404} />;
+  }
   return (
-    <div
-      className={markdownStyles["body"]}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
+    <div className="pt-12 pb-20">
+      {router.isFallback ? (
+        <h1>Loading…</h1>
+      ) : (
+        <>
+          <PostPageMeta post={post} />
+          <article className="grid-container">
+            <PostHero post={post} />
+            <PostBody content={post.content} />
+          </article>
+        </>
+      )}
+    </div>
   );
 };
+
+type Params = {
+  params: {
+    slug: string,
+  },
+};
+
+export async function getStaticProps({ params }: Params) {
+  const post = getPostBySlug(params.slug, [
+    "title",
+    "lead",
+    "date",
+    "tag",
+    "content",
+    "ogImage",
+    "coverImage",
+  ]);
+  const content = await markdownToHtml(post.content || "");
+
+  return {
+    props: {
+      post: {
+        ...post,
+        content,
+      },
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const posts = getAllPosts();
+
+  return {
+    paths: posts.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+    })),
+    fallback: false,
+  };
+}
+
+export default PostPage;
 ```
 
 labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
