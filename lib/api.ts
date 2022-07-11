@@ -17,20 +17,28 @@ export function getPostBySlug(slug: string, fields: PostKeys[]): Post {
   const fullPath = join(postsDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
-  let dataFieldsTempObj = fields.reduce(
-    (acc, curr) => ({
-      ...acc,
-      [curr]: data[curr] ?? null,
+
+  if (!fields.length) {
+    return {
+      ...data,
       slug,
-    }),
-    {} as Post
-  );
+    } as Post;
+  } else {
+    let dataFieldsTempObj = fields.reduce(
+      (acc, curr) => ({
+        ...acc,
+        [curr]: data[curr] ?? null,
+        slug,
+      }),
+      {} as Post
+    );
 
-  if (fields.includes("content")) {
-    dataFieldsTempObj = { ...dataFieldsTempObj, content };
+    if (fields.includes("content")) {
+      dataFieldsTempObj = { ...dataFieldsTempObj, content };
+    }
+
+    return dataFieldsTempObj;
   }
-
-  return dataFieldsTempObj;
 }
 
 type PostSortType = "isFeatured" | "date";
@@ -44,6 +52,7 @@ export function getAllPosts({
 } = {}): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs.map((slug) => getPostBySlug(slug, fields ?? []));
+  console.log("inside getAllPosts", slugs, posts);
   if (sortedBy) {
     sortByKeys(posts, sortedBy);
   }

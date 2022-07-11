@@ -4,13 +4,14 @@ import { Posts } from "components/mainpage/posts";
 import { getAllPosts, getMainPageContent } from "lib/api";
 import { markdownToHtml } from "lib/markdownToHtml";
 import { MainPage } from "types/mainPage";
+import { GetStaticProps } from "next";
 
 type Props = {
   page: MainPage;
 };
 
 const Index: React.FC<Props> = ({ page }) => (
-  <div className="pb-20">
+  <div className="pt-12 pb-20">
     <MainPageMeta meta={page.data.meta} />
     <Intro page={page} />
     <Posts posts={page.posts} />
@@ -19,7 +20,7 @@ const Index: React.FC<Props> = ({ page }) => (
 
 export default Index;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const mainPage = getMainPageContent();
   const intro = await markdownToHtml(mainPage.content || "");
   const posts = getAllPosts({

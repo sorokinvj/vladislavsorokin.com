@@ -8,6 +8,6 @@ export interface Post {
   coverImage: string;
   thumbnail?: string;
   ogImage: string;
-  date: Date;
+  date: string;
   content: string;
 }
