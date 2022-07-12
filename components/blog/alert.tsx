@@ -1,4 +1,4 @@
-import Container from "../shared/container";
+import Container from "../../@mapbox/container";
 import cn from "classnames";
 
 type Props = {

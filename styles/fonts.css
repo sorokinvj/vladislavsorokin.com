@@ -5,6 +5,15 @@
   src: url("../public/assets/fonts/FilsonPro-Medium.woff2") format("woff2"),
     url("../public/assets/fonts/FilsonPro-Medium.woff") format("woff");
 }
+
+@font-face {
+  font-family: "Filson Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../public/assets/fonts/FilsonPro-Regular.woff2") format("woff2"),
+    url("../public/assets/fonts/FilsonPro-Regular.woff") format("woff");
+}
+
 @font-face {
   font-family: "Helvitica Neue";
   font-weight: 300;
@@ -12,6 +21,7 @@
   src: url("../public/assets/fonts/HelveticaNeue-Light.woff2") format("woff2"),
     url("../public/assets/fonts/HelveticaNeue-Light.woff") format("woff");
 }
+
 @font-face {
   font-family: "Consolas";
   font-weight: normal;

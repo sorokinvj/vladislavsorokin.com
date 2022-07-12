@@ -49,6 +49,7 @@
     @apply font-normal;
     color: #ffbd11;
     text-decoration: underline;
+    cursor: pointer;
   }
 }
 

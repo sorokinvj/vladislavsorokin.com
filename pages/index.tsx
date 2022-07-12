@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Index: React.FC<Props> = ({ page }) => (
-  <div className="pt-12 pb-20">
+  <div>
     <MainPageMeta meta={page.data.meta} />
     <Intro page={page} />
     <Posts posts={page.posts} />
