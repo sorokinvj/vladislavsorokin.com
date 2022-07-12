@@ -20,24 +20,34 @@
 .body h1,
 .body h2,
 .body > pre,
-.body blockquote {
+.body blockquote,
+.body > code {
   @apply col-span-3 md:col-start-2 md:col-end-8;
 }
 
-.body blockquote > p {
-  @apply m-0;
-}
-
 .body blockquote {
-  @apply border-l-yellow border-0 border-l-[8px] border-solid pl-4 mt-6;
+  @apply border-l-yellow border-0 border-l-[4px] border-solid pl-4 mt-12;
 }
 
-.body > pre {
-  @apply mt-6;
+.body blockquote > p {
+  @apply m-0 text-3xl leading-relaxed;
+}
+
+.body blockquote + p {
+  @apply mt-12;
+}
+
+.body > code {
+  @apply mt-6 font-mono text-base bg-[color:#f6f8fa] p-4 rounded-lg;
 }
 
 .body p {
   @apply mt-6 md:text-lg;
+}
+
+.body p > code {
+  @apply bg-[color:#f6f8fa] px-1 odd:font-mono text-base;
+  color: var(--color-prettylights-syntax-keyword);
 }
 
 .body h2 {
