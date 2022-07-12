@@ -23,8 +23,8 @@ const Title = () => {
 };
 ```
 
-☝️ this code will produce an error `Cannot read property 'title' of undefined` because
-on the first render of Title component `serverData` is `undefined` indeed.
+This code ☝️ will produce an error `Cannot read property 'title' of undefined` because
+on the first render `serverData` is `undefined` indeed, so you can't access the `title` property.
 
 However, if we add a guard clause, we can prevent the error:
 
