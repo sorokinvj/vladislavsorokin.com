@@ -23,7 +23,7 @@ const Title = () => {
 };
 ```
 
-☝️ this code will produce an error _"Cannot read property 'title' of undefined"_ because
+☝️ this code will produce an error `Cannot read property 'title' of undefined` because
 on the first render of Title component `serverData` is `undefined` indeed.
 
 However, if we add a guard clause, we can prevent the error:
@@ -41,9 +41,9 @@ const Title = () => {
 };
 ```
 
-_This pattern of returning `null` on line 8 is called "Early return"._
+**This pattern of returning `null` on line 8 is called "Early return".**
 
-> When composing components, it is useful to think first about exceptions.
+> When composing components, it is useful to think about exceptions first.
 > On what condition your component will experience a problem?
 
 If you are just started developing React applications, this mental model of "exceptions first" might seem counterintuitive (it was for me!), but you will get used to it soon.
