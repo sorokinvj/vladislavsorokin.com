@@ -7,10 +7,58 @@ date: "2022-05-05"
 # ogImage: "/assets/blog/preview/cover.jpg"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+Also known as the "Guard clause" this simple pattern could save hours if you make it your habit. It let you stop rendering React components if some condition is not met, usually when doing something async.
 
-Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
+Consider the following case: you fetch some data and use it to render a component:
 
-## Lorem Ipsum
+```jsx
+const Title = () => {
+  const [serverData, setServerData] = useState(undefined);
 
-Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((res) => res.json())
+    .then((data) => setServerData(data));
+
+  return <div>{serverData.title}</div>;
+};
+```
+
+☝️ this code will produce an error _"Cannot read property 'title' of undefined"_ because
+on the first render of Title component `serverData` is `undefined` indeed.
+
+However, if we add a guard clause, we can prevent the error:
+
+```jsx
+const Title = () => {
+  const [serverData, setServerData] = useState(undefined);
+
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((res) => res.json())
+    .then((data) => setServerData(data));
+
+  if (!serverData) return null;
+  return <div>{serverData.title}</div>;
+};
+```
+
+_This pattern of returning `null` on line 8 is called "Early return"._
+
+> When composing components, it is useful to think first about exceptions.
+> On what condition your component will experience a problem?
+
+If you are just started developing React applications, this mental model of "exceptions first" might seem counterintuitive (it was for me!), but you will get used to it soon.
+Think about `return null` as a doorman to your club, he won't let people in if they are not ready:)
+This is why this pattern sometimes is called a "Bouncer".
+
+You might want to use it not only in React components but in other functions as well.
+When you worry about certain arguments being null or undefine, just return as early as possible:
+
+```javascript
+function doSomething (arg1, arg2) {
+  if (!arg1 || !arg2) return;
+  // main function code
+  ...
+}
+```
+
+With this approach, you can avoid uneccessary bugs and have peace of mind.
