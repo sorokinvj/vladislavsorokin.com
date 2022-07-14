@@ -3,7 +3,7 @@ export interface Post {
   slug: string;
   isFeatured?: boolean;
   title: string;
-  lead?: string;
+  lead: string;
   tag: Tag;
   coverImage: string;
   thumbnail?: string;
