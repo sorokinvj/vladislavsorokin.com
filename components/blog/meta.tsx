@@ -16,5 +16,15 @@ export const PostPageMeta: React.FC<Props> = ({ post }) => (
       content={"https://vladislavsorokin.com/posts/" + post.slug}
     />
     <meta property="og:type" content="article" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossOrigin="true"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
   </Head>
 );

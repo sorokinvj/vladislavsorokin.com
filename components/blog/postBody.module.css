@@ -28,6 +28,11 @@
   @apply m-0 text-3xl leading-relaxed;
 }
 
+.body p {
+  font-family: Libre Franklin;
+  font-weight: 300;
+}
+
 .body blockquote + p,
 .body blockquote + h2,
 .body blockquote + code {
