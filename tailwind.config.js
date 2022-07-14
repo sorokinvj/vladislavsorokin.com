@@ -7,6 +7,7 @@ module.exports = {
       fontFamily: {
         sans: ["Helvetica Neue", ...defaultTheme.fontFamily.sans],
         title: "Filson Pro",
+        mono: "Consolas",
       },
       colors: {
         yellow: "#ffbd11",

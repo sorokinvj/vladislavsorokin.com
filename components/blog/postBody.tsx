@@ -1,4 +1,5 @@
 import markdownStyles from "./postBody.module.css";
+import cn from "classnames";
 
 type Props = {
   content: string;
@@ -7,7 +8,7 @@ type Props = {
 export const PostBody = ({ content }: Props) => {
   return (
     <div
-      className={markdownStyles.body}
+      className={cn("grid-container", markdownStyles.body)}
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

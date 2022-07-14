@@ -1,5 +1,5 @@
 .body {
-  @apply col-span-3 md:col-span-8 grid-container;
+  @apply col-span-3 md:col-span-8;
 }
 
 .body figure,
