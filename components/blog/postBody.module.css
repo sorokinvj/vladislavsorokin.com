@@ -33,12 +33,18 @@
   @apply m-0 text-3xl leading-relaxed;
 }
 
-.body blockquote + p {
+.body blockquote + p,
+.body blockquote + h2,
+.body blockquote + code {
   @apply mt-12;
 }
 
 .body > code {
   @apply mt-6 font-mono text-base bg-[color:#f6f8fa] p-4 rounded-lg;
+}
+
+.body > code > pre {
+  overflow-x: scroll;
 }
 
 .body p {

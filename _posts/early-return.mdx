@@ -41,14 +41,28 @@ const Title = () => {
 };
 ```
 
-**This pattern of returning `null` on line 8 is called "Early return".**
+**This pattern of returning `null` just before return a div is called "Early return".**
 
 > When composing components, it is useful to think about exceptions first.
 > On what condition your component will experience a problem?
 
-If you are just started developing React applications, this mental model of "exceptions first" might seem counterintuitive (it was for me!), but you will get used to it soon.
-Think about `return null` as a doorman to your club, he won't let people in if they are not ready:)
-This is why this pattern sometimes is called a "Bouncer".
+## React Hooks
+
+Hooks don't like when you call them anywhere else from the top level.
+Be careful, but don't freak out when you get an error.
+Just check if you have an if statement before you call the hook:
+
+```jsx
+const Title = () => {
+  const [serverData, setServerData] = useState(undefined);
+  useFetch("https://jsonplaceholder.typicode.com/posts/1");
+  if (!serverData) return null;
+  // useFetch cannot be called here
+  return <div>{serverData.title}</div>;
+};
+```
+
+## Using the pattern in other cases
 
 You might want to use it not only in React components but in other functions as well.
 When you worry about certain arguments being null or undefine, just return as early as possible:
@@ -60,5 +74,10 @@ function doSomething (arg1, arg2) {
   ...
 }
 ```
+
+If you are just started developing React applications, this mental model of "exceptions first"
+might seem counterintuitive (it was for me!), but you will get used to it soon.
+Think about `return null` as a doorman to your club, he won't let drunk people in (`const drunk = null || undefined`)
+This is why this pattern sometimes is called a "Bouncer".
 
 With this approach, you can avoid uneccessary bugs and have peace of mind.
