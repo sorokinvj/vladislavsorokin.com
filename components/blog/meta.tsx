@@ -10,7 +10,7 @@ export const PostPageMeta: React.FC<Props> = ({ post }) => (
     <title>Vladislav Sorokin</title>
     <meta property="og:title" content={post.title} />
     <meta property="og:description" content={post.lead} />
-    <meta property="og:image" content={post.ogImage || post.ogImage} />
+    <meta property="og:image" content={post.ogImage || post.coverImage} />
     <meta
       property="og:url"
       content={"https://vladislavsorokin.com/posts/" + post.slug}
