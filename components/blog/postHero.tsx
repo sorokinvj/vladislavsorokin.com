@@ -18,6 +18,7 @@ export const PostHero = ({ post }: Props) => {
           alt={post.title}
           layout="fill"
           objectFit="cover"
+          objectPosition="0% 0%"
           priority
         />
       </div>
