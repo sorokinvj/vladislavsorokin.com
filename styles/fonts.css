@@ -15,8 +15,8 @@
 }
 
 @font-face {
-  font-family: "Helvitica Neue";
-  font-weight: 300;
+  font-family: "Helvetica Neue";
+  font-weight: light;
   font-style: normal;
   src: url("../public/assets/fonts/HelveticaNeueCyr-Light.woff2")
       format("woff2"),
@@ -24,8 +24,8 @@
 }
 
 @font-face {
-  font-family: "Helvitica Neue";
-  font-weight: 400;
+  font-family: "Helvetica Neue";
+  font-weight: normal;
   font-style: normal;
   src: url("../public/assets/fonts/HelveticaNeueCyr-Roman.woff2")
       format("woff2"),
