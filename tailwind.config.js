@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Helvetica Neue", ...defaultTheme.fontFamily.sans],
+        sans: ["Helvetica Light", ...defaultTheme.fontFamily.sans],
         title: "Filson Pro",
         mono: ["Consolas", ...defaultTheme.fontFamily.mono],
       },
