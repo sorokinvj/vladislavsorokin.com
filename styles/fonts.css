@@ -20,7 +20,7 @@
   font-style: normal;
   src: url("../public/assets/fonts/HelveticaNeueCyr-Light.woff2")
       format("woff2"),
-    url("../public/assets/fonts/HelveticaNeueCyr-Light.wofff") format("woff");
+    url("../public/assets/fonts/HelveticaNeueCyr-Light.woff") format("woff");
 }
 
 @font-face {
@@ -29,7 +29,7 @@
   font-style: normal;
   src: url("../public/assets/fonts/HelveticaNeueCyr-Roman.woff2")
       format("woff2"),
-    url("../public/assets/fonts/HelveticaNeueCyr-Roman.wofff") format("woff");
+    url("../public/assets/fonts/HelveticaNeueCyr-Roman.woff") format("woff");
 }
 
 @font-face {
