@@ -20,7 +20,7 @@ const MENU = [
 
 export const NavigationMenu = () => {
   return (
-    <ul className="w-full flex items-center justify-around mt-8 md:w-auto md:justify-end">
+    <ul className="w-full flex items-center justify-around md:w-auto md:justify-end">
       {MENU.map((item) => (
         <NavigationItem item={item} key={item.url} />
       ))}
