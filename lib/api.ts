@@ -1,5 +1,5 @@
 import fs from "fs";
-import { join, parse } from "path";
+import { join } from "path";
 import matter from "gray-matter";
 import { Post } from "types/post";
 import { sortByKeys } from "./sortByKeys";
@@ -8,13 +8,18 @@ const postsDirectory = join(process.cwd(), "_posts");
 const pagesDirectory = join(process.cwd(), "_pages");
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory).map((file) => parse(file).name);
+  const postsDirContent = fs.readdirSync(postsDirectory, {
+    withFileTypes: true,
+  });
+  return postsDirContent
+    .filter((item) => item.isFile())
+    .map((file) => file.name);
 }
 
 type PostKeys = keyof Post;
 
 export function getPostBySlug(slug: string, fields: PostKeys[]): Post {
-  const fullPath = join(postsDirectory, `${slug}.mdx`);
+  const fullPath = join(postsDirectory, slug);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
