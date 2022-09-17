@@ -59,11 +59,11 @@ export const Post: React.FC<Props> = ({ post }) => {
   return (
     <Link href="/posts/[slug]" as={`/posts/${post.slug}`} passHref>
       <a
-        className="no-underline border-solid border-l-8 border-y-0 border-r-0 flex flex-col mt-12 pl-6 col-span-3 h-[110px] md:w-[48%] md:h-[145px] md:col-span-4"
+        className="no-underline border-solid border-l-8 border-y-0 border-r-0 flex flex-col mt-12 pl-6 col-span-3 md:w-[48%] md:min-h-[145px] md:col-span-4"
         style={{ borderColor: getColorFromTag(post.tag) }}
       >
         <h2 className="font-normal">{post.title}</h2>
-        <div className="flex items-end grow">
+        <div className="flex items-end grow mt-4">
           <PostDateTag post={post} />
         </div>
       </a>
