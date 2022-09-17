@@ -16,6 +16,5 @@ export async function markdownToHtml(markdown: string) {
     .use(rehypeStringify)
     .process(markdown);
 
-  console.log(result.toString());
   return result.toString();
 }
