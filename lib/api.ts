@@ -13,13 +13,14 @@ export function getPostSlugs() {
   });
   return postsDirContent
     .filter((item) => item.isFile())
-    .map((file) => file.name);
+    .map((file) => file.name)
+    .map((fileName) => fileName.replace(/\.mdx?$/, ""));
 }
 
 type PostKeys = keyof Post;
 
 export function getPostBySlug(slug: string, fields: PostKeys[]): Post {
-  const fullPath = join(postsDirectory, slug);
+  const fullPath = join(postsDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
