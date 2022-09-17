@@ -1,0 +1,81 @@
+.body {
+  @apply col-span-3 md:col-span-8;
+}
+
+.body figure,
+.body > img {
+  @apply col-span-3 mt-12 md:mt-14 md:col-span-8;
+}
+
+.body figure figcaption {
+  @apply text-center mt-4 md:mt-6;
+}
+
+.body p,
+.body h1,
+.body h2,
+.body h3,
+.body h4,
+.body h5,
+.body h6,
+.body > pre,
+.body blockquote,
+.body > code {
+  @apply col-span-3 md:col-start-2 md:col-end-8;
+}
+
+.body p strong,
+.body p b {
+  @apply font-semibold;
+}
+
+.body blockquote {
+  @apply border-l-yellow border-0 border-l-[4px] border-solid pl-4 mt-12;
+}
+
+.body blockquote > p {
+  @apply m-0 text-3xl leading-relaxed;
+}
+
+.body blockquote + p,
+.body blockquote + h2,
+.body blockquote + code {
+  @apply mt-12;
+}
+
+.body > code {
+  @apply mt-6 font-mono text-base bg-[color:#f6f8fa] p-4 rounded-lg;
+}
+
+.body > code > pre {
+  overflow-x: scroll;
+}
+
+.body p {
+  @apply mt-6 md:text-lg;
+}
+
+.body p > code {
+  @apply bg-[color:#f6f8fa] px-1 odd:font-mono text-base;
+  color: var(--color-prettylights-syntax-keyword);
+}
+
+.body h2 {
+  @apply text-2xl mt-6;
+}
+
+.body h2 + p {
+  @apply mt-2;
+}
+
+.body figure + p,
+.body figure + h2,
+.body > img + p,
+.body > img + h2 {
+  @apply mt-12 md:mt-14;
+}
+
+.body figure > img,
+.body > img {
+  @apply mx-auto;
+}

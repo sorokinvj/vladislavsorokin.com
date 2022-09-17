@@ -3,6 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *,
+  ::before,
+  ::after {
+    border: none;
+  }
+
   h1,
   h2,
   h3,
@@ -10,10 +21,53 @@
   h5,
   h6 {
     font-family: "Filson Pro", sans-serif;
+    font-weight: 500;
+    color: black;
   }
-  *,
-  ::before,
-  ::after {
-    border: none;
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  a,
+  p,
+  figcaption {
+    @apply text-base leading-6 font-sans;
+  }
+
+  p,
+  span {
+    @apply font-light;
+  }
+
+  figcaption {
+    @apply font-light text-lightgrey;
+  }
+
+  a {
+    @apply font-normal;
+    color: #ffbd11;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .grid-container {
+    @apply w-full grid grid-cols-3 gap-x-4 md:grid-cols-8 md:gap-x-10;
+  }
+}
+
+@layer components {
+  nav a,
+  nav p,
+  nav span {
+    font-family: "Filson Pro", sans-serif;
+    font-weight: 500;
+    color: black;
   }
 }

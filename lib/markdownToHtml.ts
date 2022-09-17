@@ -1,7 +1,21 @@
 import { remark } from "remark";
-import html from "remark-html";
+import remarkFigureCaption from "@microflash/remark-figure-caption";
+import remarkRehype from "remark-rehype";
+import rehypeDocument from "rehype-document";
+import rehypeFormat from "rehype-format";
+import rehypeStringify from "rehype-stringify";
+import rehypeStarryNight from "./rehypeStarryNight";
 
-export default async function markdownToHtml(markdown: string) {
-  const result = await remark().use(html, { sanitize: true }).process(markdown);
+export async function markdownToHtml(markdown: string) {
+  const result = await remark()
+    .use(remarkFigureCaption)
+    .use(remarkRehype)
+    .use(rehypeDocument)
+    .use(rehypeFormat)
+    .use(rehypeStarryNight)
+    .use(rehypeStringify)
+    .process(markdown);
+
+  console.log(result.toString());
   return result.toString();
 }

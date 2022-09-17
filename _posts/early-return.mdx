@@ -1,0 +1,83 @@
+---
+title: "React pattern of “early return”"
+lead: "Also known as the 'Guard clause' this simple pattern could save hours of your time"
+tag: "code"
+coverImage: "/assets/blog/early-return/cover.jpg"
+date: "2022-05-06"
+ogImage: "/assets/blog/early-return/cover.jpg"
+---
+
+Also known as the "Guard clause" this simple pattern could save hours if you make it your habit. It let you stop rendering React components if some condition is not met, usually when doing something async.
+
+Consider the following case: you fetch some data and use it to render a component:
+
+```jsx
+const Title = () => {
+  const [serverData, setServerData] = useState(undefined);
+
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((res) => res.json())
+    .then((data) => setServerData(data));
+
+  return <div>{serverData.title}</div>;
+};
+```
+
+This code ☝️ will produce an error `Cannot read property 'title' of undefined` because
+on the first render `serverData` is `undefined` indeed, so you can't access the `title` property.
+
+However, if we add a guard clause, we can prevent the error:
+
+```jsx
+const Title = () => {
+  const [serverData, setServerData] = useState(undefined);
+
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((res) => res.json())
+    .then((data) => setServerData(data));
+
+  if (!serverData) return null;
+  return <div>{serverData.title}</div>;
+};
+```
+
+This pattern of returning `null` just before you return component markup is called "Early return".
+
+> When composing components, it is useful to think about exceptions first.
+> On what condition your component will experience a problem?
+
+## React Hooks
+
+Hooks don't like when you call them anywhere else from the top level.
+Be careful, but don't freak out when you get an error.
+Just check if you have an if statement before you call the hook:
+
+```jsx
+const Title = () => {
+  const [serverData, setServerData] = useState(undefined);
+  useFetch("https://jsonplaceholder.typicode.com/posts/1");
+  if (!serverData) return null;
+  // useFetch cannot be called here
+  return <div>{serverData.title}</div>;
+};
+```
+
+## Using the pattern in other cases
+
+You might want to use it not only in React components but in other functions as well.
+When you worry about certain arguments being null or undefine, just return as early as possible:
+
+```javascript
+function doSomething (arg1, arg2) {
+  if (!arg1 || !arg2) return;
+  // main function code
+  ...
+}
+```
+
+If you are just started developing React applications, this mental model of "exceptions first"
+might seem counterintuitive (it was for me!), but you will get used to it soon.
+Think about `return null` as a doorman to your club, he won't let drunk people in (`const drunk = null || undefined`)
+This is why this pattern sometimes is called a "Bouncer".
+
+With this approach, you can avoid uneccessary bugs and have peace of mind.

@@ -1,44 +1,39 @@
+import { Intro } from "components/mainpage/intro/intro";
 import { MainPageMeta } from "components/mainpage/meta";
-import Container from "components/shared/container";
-import { getMainPageContent } from "lib/api";
-import markdownToHtml from "lib/markdownToHtml";
-import Image from "next/image";
+import { Posts } from "components/mainpage/posts";
+import { getAllPosts, getMainPageContent } from "lib/api";
+import { markdownToHtml } from "lib/markdownToHtml";
 import { MainPage } from "types/mainPage";
-import markdownStyles from "styles/markdown.module.css";
+import { GetStaticProps } from "next";
 
 type Props = {
   page: MainPage;
 };
 
 const Index: React.FC<Props> = ({ page }) => (
-  <Container className="lg:columns-2 max-w-6xl lg:mt-28">
+  <div>
     <MainPageMeta meta={page.data.meta} />
-    <Image
-      src={page.data.authorImage}
-      priority
-      alt="Photo of Vladislav Sorokin"
-      width="600"
-      height="450"
-    />
-    <Container className="p-12 break-before-column">
-      <div
-        className={markdownStyles["markdown"]}
-        dangerouslySetInnerHTML={{ __html: page.content }}
-      />
-    </Container>
-  </Container>
+    <Intro page={page} />
+    <Posts posts={page.posts} />
+  </div>
 );
 
 export default Index;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const mainPage = getMainPageContent();
-  const content = await markdownToHtml(mainPage.content || "");
+  const intro = await markdownToHtml(mainPage.content || "");
+  const posts = getAllPosts({
+    fields: ["title", "date", "thumbnail", "lead", "isFeatured", "tag"],
+    sortedBy: ["isFeatured", "date"],
+  });
+
   return {
     props: {
       page: {
         data: mainPage.data,
-        content,
+        intro,
+        posts,
       },
     },
   };

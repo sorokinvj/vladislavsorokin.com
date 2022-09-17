@@ -1,22 +1,20 @@
-import Alert from "../../blog/alert";
-import Footer from "../../blog/footer";
-import Meta from "../../blog/meta";
-import cn from "classnames";
+import { Navigation } from "../navigation";
+import { GlobalMeta } from "../navigation/globalMeta";
+import { Footer } from "./footer";
 
 type Props = {
-  preview?: boolean;
-  className?: string;
-  children: React.ReactNode;
+  children: React.ReactNode | React.ReactNode[];
 };
 
-const Layout = ({ preview, className, children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <>
-      <Meta />
-      <div className={cn("min-h-screen", className)}>
-        <Alert preview={preview} />
-        <main>{children}</main>
+      <GlobalMeta />
+      <div className="p-4 md:p-0 md:max-w-4xl md:mx-auto">
+        <Navigation />
+        <main className="my-12 md:my-20">{children}</main>
       </div>
+      <Footer />
     </>
   );
 };

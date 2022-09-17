@@ -7,7 +7,7 @@ type Props = {
 
 export const MainPageMeta: React.FC<Props> = ({ meta }) => (
   <Head>
-    <title>Vladislav Sorokin website</title>
+    <title>Vladislav Sorokin</title>
     <meta property="og:title" content={meta.ogTitle} />
     <meta property="og:description" content={meta.ogDescription} />
     <meta property="og:image" content={meta.ogImage} />

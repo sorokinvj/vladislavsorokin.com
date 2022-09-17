@@ -1,8 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 @font-face {
   font-family: "Filson Pro";
-  font-weight: bold;
+  font-weight: 500;
   font-style: normal;
-  src: url("../public/assets/fonts/FilsonPro-Bold.woff2") format("woff2"),
-    url("../public/assets/fonts/FilsonPro-Bold.woff") format("woff");
+  src: url("../public/assets/fonts/FilsonPro-Medium.woff2") format("woff2"),
+    url("../public/assets/fonts/FilsonPro-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Filson Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../public/assets/fonts/FilsonPro-Regular.woff2") format("woff2"),
+    url("../public/assets/fonts/FilsonPro-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Helvetica Light";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../public/assets/fonts/HelveticaNeueCyr-Light.woff2")
+      format("woff2"),
+    url("../public/assets/fonts/HelveticaNeueCyr-Light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Helvetica Roman";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../public/assets/fonts/HelveticaNeueCyr-Roman.woff2")
+      format("woff2"),
+    url("../public/assets/fonts/HelveticaNeueCyr-Roman.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Consolas";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../public/assets/fonts/consolas.woff2") format("woff2"),
+    url("../public/assets/fonts/consolas.woff") format("woff");
 }

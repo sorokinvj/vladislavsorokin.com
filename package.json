@@ -8,15 +8,22 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@microflash/remark-figure-caption": "^1.0.0",
+    "@wooorm/starry-night": "^1.1.0",
     "classnames": "2.3.1",
     "date-fns": "2.21.3",
     "gray-matter": "4.0.3",
+    "hast-util-to-string": "^2.0.0",
     "next": "^12.1.6",
     "prettier": "^2.5.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "rehype-document": "^6.0.1",
+    "rehype-format": "^4.0.1",
+    "rehype-highlight": "^5.0.2",
+    "rehype-stringify": "^9.0.3",
     "remark": "14.0.2",
-    "remark-html": "15.0.1",
+    "remark-rehype": "^10.1.0",
     "typescript": "^4.2.4"
   },
   "devDependencies": {
