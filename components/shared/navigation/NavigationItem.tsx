@@ -28,7 +28,7 @@ export const NavigationItem: React.FC<Props> = ({ item }) => {
         className={
           isActive
             ? "text-yellow md:mr-14 md:text-[23px]"
-            : "md:mr-14 md:text-[23px]"
+            : "md:mr-14 md:text-[23px] cursor-pointer"
         }
       >
         {item.title}
