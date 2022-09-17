@@ -1,16 +1,80 @@
 ---
-title: "Search your code with regex capture groups"
-lead: "How to do refactor with find/replace in VSCode efficiently"
+title: "Refactor your code with regex capture groups"
+lead: "How to use find/replace in VSCode efficiently"
 tag: "code"
-coverImage: "/assets/blog/interface-type/cover.jpeg"
+coverImage: "/assets/blog/regex-vscode/cover.webp"
 date: "2022-07-01"
-# ogImage: "/assets/blog/hello-world/cover.jpg"
+ogImage: "/assets/blog/regex-vscode/cover.webp"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+Complex refactors are always a mix of manual and automated work. In this post, I'll show you how to use regex capture groups to make your refactors more efficient.
 
-Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
+Consider the following real-world scenario:
 
-## Lorem Ipsum
+## Moving Javascript project to Typescript
 
-Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+You renamed all your .js, .jsx to .ts and .tsx, but now its time to add types to your React components.
+One of the pattern I've been using a lot in my Typescript projects is this:
+
+```jsx
+interface Props {
+  // ...
+}
+
+const MyComponent: React.FC<Props> = ({ prop1, prop2 }) => {
+  // ...
+};
+```
+
+However, in your newly created .tsx files, you have only:
+
+```jsx
+const MyComponent = ({ prop1, prop2 }) => {
+  // ...
+};
+```
+
+Of course, you could add interface declaration and type manually to each component, but that would be a lot of work, if you have, for example 100 components. Instead, you can use regex capture groups to make this a lot easier.
+If you have only one exported `const` per .jsx file, then you could safely proceed with this approach.
+
+![](/assets/blog/regex-vscode/image1.png)
+
+**Find:** `^(const (\w+))`  
+**Replace:** `$1: React.FC<$2Props>`
+
+Lets break this down:  
+`^` - start of line  
+`()` - a capture group. Whatever is "captured" inside parenthesis could be referenced later with $1 or $2, depeding on the order of the capture groups  
+`\w+` - `\w` - any word character, `+` - means one or more times
+
+In the first capture group we have `const AppWithAuth`, in the second - `AppWithAuth`, so when we use $1, we get `const AppWithAuth`, and with $2, we get `AppWithAuth`.
+
+Now, if we wanted our regex expression to work for the whole line, capturing props to be used within `interface AppWithAuthProps`,
+we could use the following regex:
+
+**Find:** `^(const (\w+))\s+=\s\((\{*.+\})\) => \{`  
+**Replace:** `interface $2Props\n$3\n\n$1: React.FC<$2Props> => {`
+
+This gives us:
+
+```jsx
+interface AppWithAuthProps
+{ authData, authState }
+
+const AppWithAuth: React.FC<AppWithAuthProps> = ({ authData, authState }) => {
+```
+
+Again, it is the same principle, you are trying to match the whole line using capture groups, to catch the parts you need later.
+Here you are also using `\{*.+\}` that might seems like a dark sorcery, but it is actually a very simple regex expression.
+It means "any character that starts with opening curly brace, one or more times, followed by a closing curly brace":
+
+`\{` - matches `{` character, `\` means escaped - we need to tell regex engine that we want to match `{` character, not the special meaning of `{` in regex.
+`*` - zero or more times,  
+`.` - any single character except line terminators,  
+`+` - any character one or more times  
+`\s+` - matches any whitespace character one or more times
+
+Obviusly, regex cannot help you provide the correct types, but it can help you with the boilerplate and mundane manual work.
+And if you have Prettier installed, then you are just one "save" away from having your code formatted properly.
+
+![Indeed!](/assets/blog/regex-vscode/image2.png)

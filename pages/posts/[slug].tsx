@@ -10,8 +10,6 @@ import { PostBody } from "components/blog/postBody";
 
 type Props = {
   post: Post;
-  // morePosts: Post[];
-  // preview?: boolean;
 };
 
 const PostPage: React.FC<Props> = ({ post }) => {

@@ -14,10 +14,19 @@
 .body p,
 .body h1,
 .body h2,
+.body h3,
+.body h4,
+.body h5,
+.body h6,
 .body > pre,
 .body blockquote,
 .body > code {
   @apply col-span-3 md:col-start-2 md:col-end-8;
+}
+
+.body p strong,
+.body p b {
+  @apply font-semibold;
 }
 
 .body blockquote {
@@ -64,4 +73,9 @@
 .body > img + p,
 .body > img + h2 {
   @apply mt-12 md:mt-14;
+}
+
+.body figure > img,
+.body > img {
+  @apply mx-auto;
 }
