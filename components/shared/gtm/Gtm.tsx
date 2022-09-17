@@ -6,7 +6,7 @@ export const GoogleTagManager = () => {
     console.log("GTM_ID is not defined, skipping GTM");
     return null;
   }
-  console.log("GTM_ID is defined, loading GTM");
+
   return (
     <Script
       id="gtag-base"
