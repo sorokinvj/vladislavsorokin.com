@@ -7,6 +7,7 @@ type NavigationLink = {
   url: string;
   isDisabled?: boolean;
   isDownloadable?: boolean;
+  isOpenInNewTab?: boolean;
 };
 
 interface Props {
@@ -22,17 +23,20 @@ export const NavigationItem: React.FC<Props> = ({ item }) => {
       <p className="text-disabled md:mr-14 md:text-[23px]">{item.title}</p>
     );
   }
+
   return (
     <Link href={item.url} download={item?.isDownloadable} passHref>
-      <span
+      <a
+        target={item?.isOpenInNewTab ? "_blank" : undefined}
+        rel="noopener noreferrer"
         className={
           isActive
-            ? "text-yellow md:mr-14 md:text-[23px]"
-            : "md:mr-14 md:text-[23px] cursor-pointer"
+            ? "text-yellow md:mr-14 md:text-[23px] no-underline"
+            : "md:mr-14 md:text-[23px] cursor-pointer no-underline hover:underline hover:decoration-yellow hover:underline-offset-4"
         }
       >
         {item.title}
-      </span>
+      </a>
     </Link>
   );
 };

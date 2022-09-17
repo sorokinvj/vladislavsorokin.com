@@ -10,6 +10,7 @@ const MENU = [
     title: "CV",
     url: "/assets/files/Vladislav_Sorokin_CV.pdf",
     isDownloadable: true,
+    isOpenInNewTab: true,
   },
   {
     title: "Bio",
