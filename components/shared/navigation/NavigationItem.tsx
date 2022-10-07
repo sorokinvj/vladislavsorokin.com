@@ -31,7 +31,7 @@ export const NavigationItem: React.FC<Props> = ({ item }) => {
         rel="noopener noreferrer"
         className={
           isActive
-            ? "text-yellow md:mr-14 md:text-[23px] no-underline"
+            ? "md:mr-14 md:text-[23px] cursor-pointer no-underline text-yellow"
             : "md:mr-14 md:text-[23px] cursor-pointer no-underline hover:underline hover:decoration-yellow hover:underline-offset-4"
         }
       >

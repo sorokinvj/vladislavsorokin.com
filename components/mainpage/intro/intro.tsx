@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import introStyles from "./intro.module.css";
-import cn from "classnames";
 import { MainPage } from "types/mainPage";
 
 interface Props {
@@ -10,8 +8,9 @@ interface Props {
 
 export const Intro: React.FC<Props> = ({ page }) => {
   return (
-    <div className="col-span-3 grid-container items-center mb-20 md:col-span-8 md:items-start md:mt-20">
-      <div className="col-span-3 mx-auto mb-10 md:m-0 md:col-span-2">
+    <div className="col-span-3 grid-container md:col-span-8">
+      <h1 className="mb-8 md:mb-10 col-span-3 md:col-span-8">👋 Hi there!</h1>
+      <div className="col-span-1 mx-auto md:col-span-2 order-1 md:order-2">
         <Image
           src={page.data.authorImage}
           priority
@@ -20,13 +19,11 @@ export const Intro: React.FC<Props> = ({ page }) => {
           height={156}
         />
       </div>
-      <div
-        className={cn(
-          introStyles["intro"],
-          "col-span-3 text-center mx-auto md:text-left md:col-span-5 md:m-0"
-        )}
-        dangerouslySetInnerHTML={{ __html: page.intro }}
-      />
+      <p className="h-min col-span-2 text-sans text-gray-700 text-[18px] leading-6 order-2 md:order-1">
+        I am a professional software engineer, amateur artist, beginner chess
+        player and just a curious person living in a beautiful
+        Praia&nbsp;das&nbsp;Maçãs&nbsp;🇵🇹
+      </p>
     </div>
   );
 };
