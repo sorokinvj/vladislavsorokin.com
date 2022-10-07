@@ -1,12 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { MainPage } from "types/mainPage";
 
-interface Props {
-  page: MainPage;
-}
-
-export const Intro: React.FC<Props> = ({ page }) => {
+export const Intro: React.FC = () => {
   return (
     <div className="col-span-3 grid-container md:col-span-8">
       <h1 className="h-min mb-8 md:mb-10 col-span-3 md:col-span-8">
@@ -19,7 +14,7 @@ export const Intro: React.FC<Props> = ({ page }) => {
       </p>
       <div className="col-span-1 mx-auto md:col-span-3 order-1 md:order-2 md:mt-[-77px]">
         <Image
-          src={page.data.authorImage}
+          src="/assets/images/intro.png"
           priority
           alt="Photo of Vladislav Sorokin"
           width={156}
