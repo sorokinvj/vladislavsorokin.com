@@ -62,7 +62,7 @@ export const Post: React.FC<Props> = ({ post }) => {
         className="no-underline border-solid border-l-8 border-y-0 border-r-0 flex flex-col first:mt-0 mt-12 pl-6 col-span-3 md:mt-0 md:w-[48%] md:min-h-[145px] md:col-span-4"
         style={{ borderColor: getColorFromTag(post.tag) }}
       >
-        <h2 className="font-normal">{post.title}</h2>
+        <h2 className="font-normal text-2xl text-gray-700">{post.title}</h2>
         <div className="flex items-end grow mt-4">
           <PostDateTag post={post} />
         </div>
