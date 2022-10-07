@@ -46,7 +46,9 @@ export const Projects: React.FC = () => {
             <div className="relative w-20 h-16 flex flex-col items-start md:items-center justify-center">
               <Image src={project.image} alt={project.title} layout="fill" />
             </div>
-            <p className="text-xs max-w-[65px] text-center">{project.title}</p>
+            <p className="text-xs max-w-[65px] text-center text-gray-800">
+              {project.title}
+            </p>
           </div>
         ))}
       </div>
