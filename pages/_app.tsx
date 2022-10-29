@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { pageview } from "lib/gtm";
 import { GoogleTagManager } from "components/shared/gtm/Gtm";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -21,6 +22,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <Layout>
       <GoogleTagManager />
       <Component {...pageProps} />
+      <Analytics />
     </Layout>
   );
 }
