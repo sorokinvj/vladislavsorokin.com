@@ -12,7 +12,7 @@ export const Posts: React.FC<Props> = ({ posts }) => {
       <h1 className="col-span-3 md:col-span-8 mb-10 md:mb-12">
         🍎 My insights
       </h1>
-      <div className="col-span-3 md:col-span-8 flex flex-wrap justify-between">
+      <div className="col-span-3 gap-4 md:col-span-8 flex flex-wrap justify-between">
         {posts.map((post: PostType) => (
           <Post post={post} key={post.slug} />
         ))}
