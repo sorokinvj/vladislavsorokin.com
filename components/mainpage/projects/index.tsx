@@ -2,31 +2,35 @@ import Image from "next/image";
 
 const PROJECTS = [
   {
-    image: "/assets/images/logoWella.svg",
+    image: "/assets/images/projects/logoPaytrix.svg",
+    title: "payment gateway",
+  },
+  {
+    image: "/assets/images/projects/logoWella.svg",
     title: "design system",
   },
   {
-    image: "/assets/images/logoSeedrs.svg",
+    image: "/assets/images/projects/logoSeedrs.svg",
     title: "fintech platform",
   },
   {
-    image: "/assets/images/logoCarlsberg.svg",
+    image: "/assets/images/projects/logoCarlsberg.svg",
     title: "multinational e\u2011commerce",
   },
   {
-    image: "/assets/images/logoNimblefi.svg",
+    image: "/assets/images/projects/logoNimblefi.svg",
     title: "banking CRM",
   },
   {
-    image: "/assets/images/logoVoxpop.svg",
+    image: "/assets/images/projects/logoVoxpop.svg",
     title: "speech-to-text SaaS",
   },
   {
-    image: "/assets/images/logoRqc.svg",
+    image: "/assets/images/projects/logoRqc.svg",
     title: "corporate media",
   },
   {
-    image: "/assets/images/logoMaria.svg",
+    image: "/assets/images/projects/logoMaria.svg",
     title: "jewellery e\u2011commerce",
   },
 ];

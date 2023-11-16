@@ -7,11 +7,11 @@ export const Footer: React.FC = () => (
         </p>
         <p className="text-darkgrey font-sans text-base leading-6">
           You can find me on{" "}
-          <a href="twitter.com/sorokinvj" rel="noopener noreferrer">
+          <a href="https://twitter.com/sorokinvj" rel="noopener noreferrer">
             Twitter
           </a>
           ,{" "}
-          <a href="github.com/sorokinvj" rel="noopener noreferrer">
+          <a href="https://github.com/sorokinvj" rel="noopener noreferrer">
             GitHub
           </a>{" "}
           or email me at{" "}
