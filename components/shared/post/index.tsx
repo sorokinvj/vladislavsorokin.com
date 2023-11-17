@@ -25,7 +25,7 @@ const FeaturedPost = ({ post }: Props) => {
   }
   return (
     <Link href={`/posts/${post.slug}`} passHref>
-      <a className="no-underline text-black grid-container md:grid-rows-[auto_1fr_1fr] items-start">
+      <a className="no-underline text-black grid-container md:grid-rows-[auto_1fr_1fr] items-start mb-6">
         <div className="col-span-3 order-2 mb-6 md:col-span-3 md:order-1 md:row-span-4 md:m-0">
           <Image
             src={post.thumbnail}
@@ -52,6 +52,7 @@ const FeaturedPost = ({ post }: Props) => {
 };
 
 export const Post: React.FC<Props> = ({ post }) => {
+  console.log("post", post.title);
   if (post?.isFeatured) {
     return <FeaturedPost post={post} />;
   }

@@ -20,7 +20,8 @@
 .body h6,
 .body > pre,
 .body blockquote,
-.body > code {
+.body > code,
+.body ul {
   @apply col-span-3 md:col-start-2 md:col-end-8;
 }
 
@@ -64,7 +65,8 @@
   @apply text-2xl mt-6;
 }
 
-.body h2 + p {
+.body h2 + p,
+.body ul {
   @apply mt-2;
 }
 
