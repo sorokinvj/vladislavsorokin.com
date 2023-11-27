@@ -52,7 +52,6 @@ const FeaturedPost = ({ post }: Props) => {
 };
 
 export const Post: React.FC<Props> = ({ post }) => {
-  console.log("post", post.title);
   if (post?.isFeatured) {
     return <FeaturedPost post={post} />;
   }
