@@ -21,7 +21,8 @@
 .body > pre,
 .body blockquote,
 .body > code,
-.body ul {
+.body ul,
+.body ol {
   @apply col-span-3 md:col-start-2 md:col-end-8;
 }
 
@@ -66,7 +67,10 @@
 }
 
 .body h2 + p,
-.body ul {
+.body ul,
+.body ol,
+.body ol li,
+.body ul li {
   @apply mt-2;
 }
 
