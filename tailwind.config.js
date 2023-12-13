@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Helvetica Roman", ...defaultTheme.fontFamily.sans],
-        title: "Filson Pro",
+        title: "Noto Sans",
         mono: ["Consolas", ...defaultTheme.fontFamily.mono],
       },
       colors: {
