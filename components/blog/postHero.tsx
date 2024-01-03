@@ -10,7 +10,7 @@ export const PostHero = ({ post }: Props) => {
   return (
     <div className="col-span-3 md:col-span-8 grid-container">
       <div
-        className="relative flex flex-col col-span-3 h-48 md:col-span-8 md:h-96"
+        className="relative flex flex-col col-span-3 h-48 md:col-span-8 md:h-[450px]"
         style={{ boxShadow: "0 0 11px 0 rgba(0, 0, 0, 0.25)" }}
       >
         <Image

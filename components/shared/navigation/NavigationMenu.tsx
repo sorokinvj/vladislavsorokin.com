@@ -8,8 +8,7 @@ const MENU = [
   },
   {
     title: "CV",
-    url: "/assets/files/Vladislav_Sorokin_CV.pdf",
-    isDownloadable: true,
+    url: "/posts/cv-updated-2024",
     isOpenInNewTab: true,
   },
   {
