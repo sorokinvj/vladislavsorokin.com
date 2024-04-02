@@ -25,7 +25,7 @@ export const PostHero = ({ post }: Props) => {
       <div className="flex items-start mt-8 col-span-3 md:col-start-2 md:col-end-8">
         <PostDateTag post={post} />
       </div>
-      <h1 className="text-3xl mt-2 md:text-4xl col-span-3 md:col-start-2 md:col-end-8">
+      <h1 className="font-bold text-3xl mt-2 md:text-4xl col-span-3 md:col-start-2 md:col-end-8">
         {post.title}
       </h1>
     </div>
