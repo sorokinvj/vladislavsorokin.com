@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Index: React.FC<Props> = ({ page }) => (
-  <div className="child:mb-16">
+  <div className="flex flex-col gap-16">
     <MainPageMeta meta={page.data.meta} />
     <Intro />
     <Projects />

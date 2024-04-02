@@ -2,12 +2,16 @@ import Image from "next/image";
 
 const PROJECTS = [
   {
+    image: "/assets/images/projects/logoJobLander.svg",
+    title: "Chrome Extension",
+  },
+  {
     image: "/assets/images/projects/logoPaytrix.svg",
     title: "payment gateway",
   },
   {
-    image: "/assets/images/projects/logoWella.svg",
-    title: "design system",
+    image: "/assets/images/projects/logoTDF.png",
+    title: "web3 booking",
   },
   {
     image: "/assets/images/projects/logoSeedrs.svg",
@@ -48,7 +52,12 @@ export const Projects: React.FC = () => {
             key={project.image}
           >
             <div className="relative w-20 h-16 flex flex-col items-start md:items-center justify-center">
-              <Image src={project.image} alt={project.title} layout="fill" />
+              <Image
+                src={project.image}
+                alt={project.title}
+                layout="fill"
+                className="grayscale contrast-100"
+              />
             </div>
             <p className="text-xs max-w-[65px] text-center text-gray-800">
               {project.title}
