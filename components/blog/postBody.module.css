@@ -26,6 +26,10 @@
   @apply col-span-3 md:col-start-2 md:col-end-8;
 }
 
+.body ol {
+  @apply list-decimal pl-2 md:pl-0;
+}
+
 .body p strong,
 .body p b {
   @apply font-semibold;
