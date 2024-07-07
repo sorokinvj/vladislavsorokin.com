@@ -43,7 +43,7 @@ export const ResizeLine: React.FC<ResizeLineProps> = ({
 
   return (
     <div
-      className="relative w-full h-4 cursor-grab"
+      className="relative w-full h-0.5 cursor-grab"
       style={{ background: `linear-gradient(${color1}, ${color2})` }}
       onMouseDown={handleMouseDown}
     >
