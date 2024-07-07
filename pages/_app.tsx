@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { pageview } from "lib/gtm";
 import { GoogleTagManager } from "components/shared/gtm/Gtm";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -16,6 +16,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeComplete", pageview);
     };
   }, [router.events]);
+
+  if (router.pathname === "/gradient") {
+    return <Component {...pageProps} />;
+  }
 
   return (
     <Layout>
