@@ -1,17 +1,17 @@
 import React, { useRef, useState, useEffect } from "react";
 
 interface ResizeLineProps {
-  onHeightChange: (
-    index: number,
-    newHeight: number,
-    direction: "up" | "down"
-  ) => void;
+  onHeightChange: (index: number, delta: number) => void;
   index: number;
+  color1: string;
+  color2: string;
 }
 
 export const ResizeLine: React.FC<ResizeLineProps> = ({
   onHeightChange,
   index,
+  color1,
+  color2,
 }) => {
   const [dragging, setDragging] = useState(false);
   const startYRef = useRef(0);
@@ -23,9 +23,9 @@ export const ResizeLine: React.FC<ResizeLineProps> = ({
 
   const handleMouseMove = (e: MouseEvent) => {
     if (!dragging) return;
-    const newHeight = e.clientY - startYRef.current;
-    onHeightChange(index, newHeight, "down");
-    onHeightChange(index + 1, -newHeight, "up");
+    const delta = e.clientY - startYRef.current;
+    startYRef.current = e.clientY;
+    onHeightChange(index, delta);
   };
 
   const handleMouseUp = () => {
@@ -43,8 +43,13 @@ export const ResizeLine: React.FC<ResizeLineProps> = ({
 
   return (
     <div
-      className="w-full h-1 cursor-row-resize border-t border-dashed border-white"
+      className="relative w-full h-4 cursor-grab"
+      style={{ background: `linear-gradient(${color1}, ${color2})` }}
       onMouseDown={handleMouseDown}
-    />
+    >
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100">
+        <div className="w-full h-px bg-white opacity-30"></div>
+      </div>
+    </div>
   );
 };

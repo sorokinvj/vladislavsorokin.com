@@ -10,14 +10,14 @@ interface Gradient {
 
 export const SunsetSimulator: React.FC = () => {
   const [gradients, setGradients] = useState<Gradient[]>([
-    { color1: "#34347F", color2: "#0047AB", height: 0 },
-    { color1: "#0047AB", color2: "#00BFFF", height: 0 },
-    { color1: "#00BFFF", color2: "#E0ffC2", height: 0 },
-    { color1: "#E0ffC2", color2: "#F4e0a8", height: 0 },
-    { color1: "#F4e0a8", color2: "#FF4500", height: 0 },
-    { color1: "#FF4500", color2: "#FF6347", height: 0 },
+    { color1: "#34347F", color2: "#4B5DFF", height: 0 }, // Dark blue to Light blue
+    { color1: "#4B5DFF", color2: "#7EC8E3", height: 0 }, // Light blue to Sky blue
+    { color1: "#7EC8E3", color2: "#E0FFC2", height: 0 }, // Sky blue to Light green
+    { color1: "#E0FFC2", color2: "#F4E0A8", height: 0 }, // Light green to Light yellow
+    { color1: "#F4E0A8", color2: "#FFAB76", height: 0 }, // Light yellow to Peach
+    { color1: "#FFAB76", color2: "#FF6347", height: 0 }, // Peach to Light coral
+    { color1: "#FF6347", color2: "#8B0000", height: 0 }, // Light coral to Dark red
   ]);
-
   useEffect(() => {
     const screenHeight = window.innerHeight;
     setGradients((prevGradients) =>
@@ -29,10 +29,11 @@ export const SunsetSimulator: React.FC = () => {
   }, []);
 
   const handleHeightChange = (index: number, delta: number) => {
-    const adjustment = delta / 10; // Reduce sensitivity
     const newGradients = [...gradients];
-    newGradients[index].height += adjustment;
-    newGradients[index + 1].height -= adjustment;
+    newGradients[index].height += delta;
+    if (index + 1 < newGradients.length) {
+      newGradients[index + 1].height -= delta;
+    }
     setGradients(newGradients);
   };
 
@@ -64,7 +65,12 @@ export const SunsetSimulator: React.FC = () => {
             onColorChange={handleColorChange}
           />
           {index < gradients.length - 1 && (
-            <ResizeLine index={index} onHeightChange={handleHeightChange} />
+            <ResizeLine
+              index={index}
+              onHeightChange={handleHeightChange}
+              color1={gradient.color2}
+              color2={gradients[index + 1].color1}
+            />
           )}
         </React.Fragment>
       ))}
