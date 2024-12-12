@@ -2,8 +2,12 @@ import Image from "next/image";
 
 const PROJECTS = [
   {
+    image: "/assets/images/projects/logoProxylink.svg",
+    title: "CX platform",
+  },
+  {
     image: "/assets/images/projects/logoJobLander.svg",
-    title: "Chrome Extension",
+    title: "Chrome extension",
   },
   {
     image: "/assets/images/projects/logoPaytrix.svg",
