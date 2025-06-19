@@ -1,0 +1,67 @@
+---
+title: "We are the vibe, indeed"
+lead: "What separates senior devs from juniors? Not rushing."
+tag: "insight"
+coverImage: "/assets/blog/we-are-the-vibe-cover.png"
+date: "2025-06-19"
+ogImage: "/assets/blog/we-are-the-vibe-cover.png"
+isFeatured: true
+thumbnail: "/assets/blog/we-are-the-vibe-thumbnail.png"
+---
+
+```javascript
+// "so we are the vibe in the vibe coding?"
+// --- Roosiel Agramonte, LinkedIn
+```
+
+One thing AI really gives you is confidence: even if you don’t fully understand a topic, as long as you know one key detail, you can still work with it — especially when you’ve got good coding agents or a solid AI assistant.
+
+Say you’re trying to make a decision — and, being in one of your nerdy moods, you realize Bayes’ theorem might be helpful.
+
+You might not have studied statistics, and maybe you don’t even know how to calculate the probabilities — but a lot of people still use Bayes as a thinking tool in real-world decisions. Investors do it. Analysts do it. Less-wrong-doers, obviously. You don’t need to master the math to get value from the concept.
+
+Same goes for programming. Maybe you’ve heard that RxJS is great for real-time streaming, even if you have no idea what its API looks like. That’s fine. You can just tell your coding agent, “Use this concept here,” and let it figure out the implementation.
+
+But here’s the catch: your LLM might not know it either. Maybe you mention an obscure framework you saw in a YouTube video — barely documented, but it sounded cool — and now your AI is flying blind. The problem is, LLMs rarely admit they don’t know something. They act like those straight-A students who never break character. They’ll bluff, they’ll hallucinate. Just to please you. Even “act as a staff engineer at X” won’t stop them from writing completely useless nonsense five seconds after generating an architectural masterpiece.
+
+So your job is to figure that out early — before your AI pair starts making dumb mistakes. You’ve got to feed your LLM the knowledge it’s missing, especially if you’re dealing with a weird idea that might work but isn’t common knowledge. That could mean giving it a link to a repo, a doc page, or even uploading a book.
+
+Personally, I use [Cline](https://cline.bot/), a coding extension for VSCode/Cursor. It supports MCP services. I use [Firecrawl](https://github.com/mendableai/firecrawl-mcp-server) — it pulls a ton of content beyond just what you’d find via Google and makes that knowledge available to your model. So if you say “Hey, grab me the best stuff on ReactiveJS,” Firecrawl will fetch the top five sources and feed them into your LLM context. I don’t know exactly how it ranks them, but in my case, the results are always solid.
+
+The best part? You can wire this logic (_“fetch docs always”_) into your agent prompt. Auto-approve its actions. And then forget about it.
+But the important part is that **you knew how it works**.
+Do you want a hint? — _prep harder_.
+
+This is actually one of the key differences between junior and senior developers. Without being explicitly asked, most models act as juniors who tend to jump straight into writing code at the first opportunity — without thinking it through. They rush in, make silly errors, eventually learn the hard way — “Next time, I’d rather think about that BEFORE writing a single line.” You do 10,000 hours of silly mistakes and congrats — you’re a senior dev. No magic. Just experience. Just a habit of preparing thoroughly and delaying coding until you’re 100% clear on what you’re doing.
+
+The Cline devs understood this, which is why they made different dev modes a first-class feature in their extension. You’re actually supposed to switch between them often and use them equally. You plan first, then act. Yes, you can even assign different models to different modes. “Roo Code,” a fork of Cline, took this idea even further — you can now create your own modes, perspectives, or “thinking hats” (à la de Bono), basically different versions of yourself, to support your development process.
+
+One more thing Cline nailed — something I now consider essential: the `memory-bank`.
+
+Every time your project changes, the system creates tiny Markdown files: `progress.md`, `productContext.md`, `systemPatterns.md`, and more. These are snapshots of your current brain. Of what your AI knows. Of what it should never forget. Another interpretation of what every good dev team knows: coding guidelines rules.
+
+Why? Because LLMs spiral. They lose track. They erase stuff. Sometimes the only way to recover is to start over — but that’s expensive, you end up spending hours re-explaining something you already figured out last week. A good AI agent documents obsessively.
+
+That’s how you don’t lose the thread.
+
+> So what does it look like in practice? - You’re supposed to change perspectives!
+
+Take a deep breath.
+
+Define the process.
+
+Seek clarity.
+
+Question.
+
+Explore.
+
+Guide and be guided.
+
+Let the rhythm find you.
+
+Be the vibe.
+
+```javascript
+// Image source: [wallpapercat.com](https://wallpapercat.com/finn-and-jake-wallpapers)_
+```
