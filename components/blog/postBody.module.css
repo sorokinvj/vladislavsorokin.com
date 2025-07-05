@@ -83,6 +83,18 @@
   @apply mt-2;
 }
 
+.body ol li {
+  @apply list-inside;
+}
+
+.body ul {
+  @apply pl-4;
+}
+
+.body ul li {
+  @apply list-disc;
+}
+
 .body figure + p,
 .body figure + h2,
 .body > img + p,
